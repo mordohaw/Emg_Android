@@ -1,4 +1,4 @@
-package williammordohay.localisationapp.apiConnection;
+package williammordohay.localisationapp.ApiConnection;
 
 /**
  * Created by William on 22/11/2017.
