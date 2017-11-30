@@ -1,4 +1,4 @@
-package williammordohay.localisationapp.EntryData;
+package williammordohay.localisationapp.Stops;
 
 /**
  * Created by William on 30/11/2017.
