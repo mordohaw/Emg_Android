@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/style_background"
+    tools:context="williammordohay.localisationapp.Activities.MainActivity">
+
+    <Button
+        android:id="@+id/tram_stop_btn"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:background="@drawable/orange_button"
+        android:text="Arrets Tram"
+        android:onClick="gotoStopActivity"
+        android:layout_marginTop="101dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <EditText
+        android:id="@+id/myPositionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="position"
+        android:layout_below="@+id/tram_stop_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp" />
+    <Button
+        android:id="@+id/position_btn"
+        android:onClick="getPosition"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:text="getPosition"
+        android:background="@drawable/orange_button"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="201dp"
+        android:layout_below="@+id/myPositionText"
+        android:layout_alignStart="@+id/tram_stop_btn"
+        android:layout_marginTop="14dp" />
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/logo_app"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp" />
+
+
+</RelativeLayout>
