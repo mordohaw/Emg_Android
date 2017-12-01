@@ -28,7 +28,7 @@
         android:layout_marginTop="34dp" />
     <Button
         android:id="@+id/position_btn"
-        android:onClick="getPosition"
+        android:onClick=""
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:text="getPosition"

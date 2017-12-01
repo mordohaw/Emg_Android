@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         positionValue = ((EditText) findViewById(R.id.myPositionText));
         buttonStop = ((Button)findViewById(R.id.tram_stop_btn));
         effetAuClic(buttonStop);
+        getPosition();
 
     }
 
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void getPosition(View v) {
+    public void getPosition() {
 
 
         if (!checkLocation())
@@ -149,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
     public void gotoStopActivity(View v)
     {
         communicationIntent = new Intent(MainActivity.this, StopActivity.class);
-        //passPosition(communicationIntent);
+        passPosition(communicationIntent);
         //effetAuClic(v);
 
         startActivity(communicationIntent);

@@ -6,4 +6,6 @@
 
     <color name="generalBackground">#CECEF6</color>
 
+    <color name="greenThemeColor">#04B404</color>
+
 </resources>

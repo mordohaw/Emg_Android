@@ -55,12 +55,12 @@ public class StopAdapter extends ArrayAdapter<Stop> {
 
         Stop currentStop = getItem(position);
         viewHolder.name.setText(currentStop.getName());
-        //viewHolder.longitude.setText((int) currentStop.getLon());
-        //viewHolder.latitude.setText((int) currentStop.getLat());
+        viewHolder.longitude.setText(String.valueOf(currentStop.getLon()));
+        viewHolder.latitude.setText(String.valueOf(currentStop.getLat()));
 
-        /*for(int i=0;i<currentStop.getLines().length;i++){
+        for(int i=0;i<currentStop.getLines().length;i++){
             viewHolder.lines.setText(currentStop.getLines()[i]);
-        }*/
+        }
 
 
         mapStops.put(convertView, currentStop);

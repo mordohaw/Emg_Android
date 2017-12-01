@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LocalisationApp</string>
+    <string name="stop_activity_title">Liste des arrets</string>
 </resources>
