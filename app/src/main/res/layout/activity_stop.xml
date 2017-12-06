@@ -24,12 +24,14 @@
         android:layout_height="wrap_content"
         android:textSize="25dp"
         android:text="@string/stop_activity_title"
+        android:textStyle="bold"
         android:layout_below="@+id/previousButton"
         android:layout_centerHorizontal="true" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:orientation="horizontal"
         android:id="@+id/spinnerLayout"
         android:layout_below="@+id/titleView">
@@ -37,10 +39,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Distance : "/>
+            android:textSize="18dp"
+            android:text="Distance (en m) : "/>
         <Spinner
         android:id="@+id/distanceSpinner"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/SwipeRefresh"
          />

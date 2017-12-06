@@ -5,7 +5,9 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -26,7 +28,8 @@ public class StopActivity extends CommunicationActivity {
     private List<Stop> stopList = new ArrayList<>();
     private String positionLat,positionLong;
     private SwipeRefreshLayout refreshView;
-    private static final int refreshTime = 5;
+    private static int refreshTime = 5;
+    private Spinner distanceSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class StopActivity extends CommunicationActivity {
         setContentView(R.layout.activity_stop);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        distanceSpinner = (Spinner) findViewById(R.id.distanceSpinner);
+        populateSpinner();
 
         //On récupère la valeur
         //Bundle extras = getIntent().getExtras();
@@ -67,8 +72,8 @@ public class StopActivity extends CommunicationActivity {
 
     }
     public List<Stop> getStops(){
-        // "5.7180759" -- "45.1927837"
-        stopUrl = UrlConstructor.getStopUrl(positionLong,positionLat,"500");
+        // "5.7180759" -- "45.1927837--500"
+        stopUrl = UrlConstructor.getStopUrl(positionLong,positionLat,distanceSpinner.getSelectedItem().toString());
         inputData = recupereDonnees(stopUrl);
 
         return (gson.fromJson(inputData, new TypeToken<List<Stop>>(){}.getType()));
@@ -88,6 +93,11 @@ public class StopActivity extends CommunicationActivity {
                 {
                     try
                     {
+                        if(distanceSpinner.getSelectedItem().toString()=="1000"){
+                            refreshTime=10;
+                        }else{
+                            refreshTime=5;
+                        }
                         //dummy delay for "tpsRafraichissement" second
                         Thread.sleep(refreshTime*1000);
 
@@ -129,5 +139,17 @@ public class StopActivity extends CommunicationActivity {
     public void quitActivity(View v)
     {
         StopActivity.this.finish();
+    }
+
+    public void populateSpinner(){
+        String distanceTab[] = {"300", "500", "1000"};
+
+
+
+        //populate the spinner
+        ArrayAdapter<String> lineNumberAdapter = new ArrayAdapter<>(this, R.layout.element_spinner, distanceTab);
+        distanceSpinner.setAdapter(lineNumberAdapter);
+        //set default selected value
+        distanceSpinner.setSelection(1);
     }
 }
