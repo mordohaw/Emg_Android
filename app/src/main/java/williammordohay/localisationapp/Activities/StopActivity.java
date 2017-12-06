@@ -5,9 +5,11 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -67,10 +69,23 @@ public class StopActivity extends CommunicationActivity {
         myStopAdapter = new StopAdapter(this,stopList);
 
         myListView.setAdapter(myStopAdapter);
+        myListView.setOnItemClickListener( new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //TextView lineTextView = (TextView) findViewById(R.id.line_value);
+                //String myStr = lineTextView.toString();
+                //StopAdapter.StopView myItem = (StopAdapter.StopView) parent.getItemAtPosition(position).getClass();
+                Stop myStop = getStops().get(position);
+            }
+        });
         //adapteurProduction=new AdapteurProduction(this,listeProduction);
         //vueListe.setAdapter(adapteurProduction);
 
     }
+
+
     public List<Stop> getStops(){
         // "5.7180759" -- "45.1927837--500"
         stopUrl = UrlConstructor.getStopUrl(positionLong,positionLat,distanceSpinner.getSelectedItem().toString());
