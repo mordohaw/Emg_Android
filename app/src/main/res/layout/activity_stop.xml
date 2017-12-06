@@ -27,6 +27,26 @@
         android:layout_below="@+id/previousButton"
         android:layout_centerHorizontal="true" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/spinnerLayout"
+        android:layout_below="@+id/titleView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Distance : "/>
+        <Spinner
+        android:id="@+id/distanceSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/SwipeRefresh"
+         />
+    </LinearLayout>
+
+
     <ImageView
         android:id="@+id/AppLogo"
         android:layout_width="135dp"
@@ -39,13 +59,13 @@
         android:layout_centerHorizontal="true" />
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/SwipeRefresh"
+        android:id="@+id/refreshList"
         android:layout_centerHorizontal="true"
         android:layout_height="match_parent"
         android:layout_width="300dp"
         android:layout_above="@id/AppLogo"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/titleView">
+        android:layout_below="@id/spinnerLayout">
 
         <ListView
             android:layout_width="wrap_content"
@@ -53,4 +73,8 @@
             android:id="@+id/stopListView"
             />
     </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+
 </RelativeLayout>

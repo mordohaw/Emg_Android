@@ -1,6 +1,9 @@
 package williammordohay.localisationapp.Activities;
 
+import android.content.Context;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ListView;
 
@@ -22,22 +25,35 @@ public class StopActivity extends CommunicationActivity {
     private StopAdapter myStopAdapter;
     private List<Stop> stopList = new ArrayList<>();
     private String positionLat,positionLong;
+    private SwipeRefreshLayout refreshView;
+    private static final int refreshTime = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stop);
 
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
         //On récupère la valeur
-        Bundle extras = getIntent().getExtras();
-        positionLat = extras.getString("myLatitude");
-        positionLong = extras.getString("myLongitude");
+        //Bundle extras = getIntent().getExtras();
+        updatePosition();
 
         vueListe = (ListView) findViewById(R.id.stopListView);
         gson = new Gson();
 
         populateStopList(vueListe);
 
+        refreshView = (SwipeRefreshLayout)findViewById(R.id.refreshList);
+        refreshList();
+
+    }
+
+    public void updatePosition(){
+        //if (checkLocation())
+        getPosition();
+        positionLat = String.valueOf(latitudeGPS);//extras.getString("myLatitude");
+        positionLong = String.valueOf(longitudeGPS); //extras.getString("myLongitude");
     }
 
     public void populateStopList(ListView myListView){
@@ -58,6 +74,58 @@ public class StopActivity extends CommunicationActivity {
         return (gson.fromJson(inputData, new TypeToken<List<Stop>>(){}.getType()));
     }
 
+    private void refreshList()
+    {
+
+
+        //rafraichirListe long-time task in background thread
+        new Thread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                while(!isDestroyed())
+                {
+                    try
+                    {
+                        //dummy delay for "tpsRafraichissement" second
+                        Thread.sleep(refreshTime*1000);
+
+                        //update ui on UI thread
+                        runOnUiThread(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+
+                                //set the rafraichirListe
+                                vueListe.invalidateViews();
+                                refreshView.setRefreshing(true);
+                                //set the action on up dating
+
+                                updatePosition();
+                                populateStopList(vueListe);
+
+
+                                //Update the list
+                                vueListe.invalidateViews();
+                                refreshView.setRefreshing(false);
+                            }
+                        });
+                    } catch (InterruptedException e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                }
+
+
+
+            }
+        }).start();
+
+
+    }
     public void quitActivity(View v)
     {
         StopActivity.this.finish();
