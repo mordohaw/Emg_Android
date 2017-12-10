@@ -17,4 +17,15 @@ public class UrlConstructor {
         return("http://data.metromobilite.fr/api/linesNear/json?x=" + longitude + "&y=" + lattitude + "&dist=" + distance + "&details=false");
 
     }
+
+
+    public static String getLineInfoUrl(String lineId){
+        return("https://data.metromobilite.fr/api/routers/default/index/routes?codes=" + lineId);
+
+    }
+
+    public static String getStopTimeUrl(String stopId){
+        return("https://data.metromobilite.fr/api/routers/default/index/stops/" + stopId + "/stoptimes");
+
+    }
 }

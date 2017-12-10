@@ -1,6 +1,7 @@
 package williammordohay.localisationapp.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -23,6 +24,13 @@ import williammordohay.localisationapp.ApiConnection.UrlConstructor;
 import williammordohay.localisationapp.Stops.StopAdapter;
 
 public class StopActivity extends CommunicationActivity {
+
+    /*
+
+     Liste des lignes de transport : http://data.metromobilite.fr/api/routers/default/index/routes?codes=SEM:12
+
+     Horaires au poteau : https://data.metromobilite.fr/api/routers/default/index/stops/SEM:3207/stoptimes
+     */
 
     private String stopUrl="";
     private ListView vueListe;
@@ -77,7 +85,11 @@ public class StopActivity extends CommunicationActivity {
                 //TextView lineTextView = (TextView) findViewById(R.id.line_value);
                 //String myStr = lineTextView.toString();
                 //StopAdapter.StopView myItem = (StopAdapter.StopView) parent.getItemAtPosition(position).getClass();
-                Stop myStop = getStops().get(position);
+                Stop selectedStop = getStops().get(position);
+                view.setBackgroundColor(0000);
+
+                goToStopActivity(selectedStop);
+
             }
         });
         //adapteurProduction=new AdapteurProduction(this,listeProduction);
@@ -85,10 +97,31 @@ public class StopActivity extends CommunicationActivity {
 
     }
 
+    public void goToStopActivity(Stop currentStop){
+        String selectedStopId = currentStop.getId();
+        String[] selectedStopLine = currentStop.getLines();
+        Intent StopIntent = new Intent(StopActivity.this, StopMenu.class);
+
+        //pass the infos about the stop
+        passStopInfo(StopIntent, selectedStopId, selectedStopLine);
+
+        startActivity(StopIntent);
+    }
+
+    public void passStopInfo(Intent communication, String id, String[] lines)
+    {
+        Bundle paquetSortant = new Bundle();
+
+        paquetSortant.putString("myId", id);
+        paquetSortant.putStringArray("myLines", lines);
+        communication.putExtras(paquetSortant);
+    }
+
+
 
     public List<Stop> getStops(){
-        // "5.7180759" -- "45.1927837--500"
-        stopUrl = UrlConstructor.getStopUrl(positionLong,positionLat,distanceSpinner.getSelectedItem().toString());
+        // "5.7180759" -- "45.1927837--500"     positionLong   positionLat
+        stopUrl = UrlConstructor.getStopUrl("5.7180759","45.1927837",distanceSpinner.getSelectedItem().toString());
         inputData = recupereDonnees(stopUrl);
 
         return (gson.fromJson(inputData, new TypeToken<List<Stop>>(){}.getType()));
