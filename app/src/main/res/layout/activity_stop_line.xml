@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/style_background"
+    tools:context="williammordohay.localisationapp.Activities.StopLineActivity">
+
+    <ImageButton
+        android:id="@+id/previousButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="quitActivity"
+        android:background="@color/greenThemeColor"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@android:drawable/ic_media_previous" />
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:text="Informations sur les lignes"
+        android:textStyle="bold"
+        android:layout_below="@+id/previousButton"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:id="@+id/spinnerLayout"
+        android:layout_below="@+id/titleView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="line number : "/>
+        <Spinner
+            android:id="@+id/lineSpinner"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/lineListView"
+            />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/AppLogo"
+        android:layout_width="135dp"
+        android:layout_height="78dp"
+        app:srcCompat="@drawable/logo_app"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="392dp"
+        android:layout_marginBottom="21dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+
+        <ListView
+            android:layout_width="300dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="match_parent"
+            android:layout_above="@id/AppLogo"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/spinnerLayout"
+            android:id="@+id/lineListView"
+            />
+
+
+</RelativeLayout>

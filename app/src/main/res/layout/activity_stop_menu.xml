@@ -5,6 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/style_background"
-    tools:context="williammordohay.localisationapp.Activities.StopMenu">
+    tools:context="williammordohay.localisationapp.Activities.StopMenuActivity">
 
+    <Button
+        android:id="@+id/lineButton"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="94dp"
+        android:text="Line info"
+        android:onClick="goToLineActivity"
+        android:background="@drawable/green_button2"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/button2" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:background="@drawable/green_button2"
+        android:text="Stop Info"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/logo_app"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp" />
 </RelativeLayout>

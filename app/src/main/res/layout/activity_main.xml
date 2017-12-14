@@ -12,12 +12,12 @@
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:layout_gravity="center"
-        android:background="@drawable/orange_button"
+        android:background="@drawable/green_button2"
         android:text="Arrets Tram"
         android:onClick="gotoStopActivity"
         android:layout_marginTop="101dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/imageView" />
     <EditText
         android:id="@+id/myPositionText"
         android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:text="getPosition"
-        android:background="@drawable/orange_button"
+        android:background="@drawable/green_button2"
         tools:layout_editor_absoluteX="145dp"
         tools:layout_editor_absoluteY="201dp"
         android:layout_below="@+id/myPositionText"

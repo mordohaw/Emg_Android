@@ -45,7 +45,7 @@ public class MainActivity extends CommunicationActivity {
 
     public void gotoStopActivity(View v)
     {
-        communicationIntent = new Intent(MainActivity.this, StopActivity.class);
+        communicationIntent = new Intent(MainActivity.this, StopListActivity.class);
         // 04/12 passPosition(communicationIntent);
         //effetAuClic(v);
 

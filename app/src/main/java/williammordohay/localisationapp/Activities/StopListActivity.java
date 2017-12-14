@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -23,7 +22,7 @@ import williammordohay.localisationapp.R;
 import williammordohay.localisationapp.ApiConnection.UrlConstructor;
 import williammordohay.localisationapp.Stops.StopAdapter;
 
-public class StopActivity extends CommunicationActivity {
+public class StopListActivity extends CommunicationActivity {
 
     /*
 
@@ -44,7 +43,7 @@ public class StopActivity extends CommunicationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stop);
+        setContentView(R.layout.activity_stop_list);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         distanceSpinner = (Spinner) findViewById(R.id.distanceSpinner);
@@ -100,7 +99,7 @@ public class StopActivity extends CommunicationActivity {
     public void goToStopActivity(Stop currentStop){
         String selectedStopId = currentStop.getId();
         String[] selectedStopLine = currentStop.getLines();
-        Intent StopIntent = new Intent(StopActivity.this, StopMenu.class);
+        Intent StopIntent = new Intent(StopListActivity.this, StopMenuActivity.class);
 
         //pass the infos about the stop
         passStopInfo(StopIntent, selectedStopId, selectedStopLine);
@@ -186,7 +185,7 @@ public class StopActivity extends CommunicationActivity {
     }
     public void quitActivity(View v)
     {
-        StopActivity.this.finish();
+        StopListActivity.this.finish();
     }
 
     public void populateSpinner(){

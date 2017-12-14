@@ -41,9 +41,10 @@
         -->
 
         <activity
-            android:name=".Activities.StopActivity"
+            android:name=".Activities.StopListActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activities.StopMenu"></activity>
+        <activity android:name=".Activities.StopMenuActivity" />
+        <activity android:name=".Activities.StopLineActivity"></activity>
     </application>
 
 </manifest>
