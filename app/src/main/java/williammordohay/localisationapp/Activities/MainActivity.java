@@ -31,7 +31,6 @@ public class MainActivity extends CommunicationActivity {
         setContentView(R.layout.activity_main);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        positionValue = ((EditText) findViewById(R.id.myPositionText));
         buttonStop = ((Button)findViewById(R.id.tram_stop_btn));
         effetAuClic(buttonStop);
         //getPosition();

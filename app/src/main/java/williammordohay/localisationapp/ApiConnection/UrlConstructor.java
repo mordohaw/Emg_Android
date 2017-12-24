@@ -28,4 +28,11 @@ public class UrlConstructor {
         return("https://data.metromobilite.fr/api/routers/default/index/stops/" + stopId + "/stoptimes");
 
     }
+
+    public static String getGoogleMapPos(){
+        return(" https://maps.googleapis.com/maps/api/geocode/json?address=5%20Rue%20de%20New-York,%20Grenoble&key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks");
+
+    }
+
+
 }

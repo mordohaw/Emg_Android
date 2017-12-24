@@ -51,8 +51,8 @@
 
     <ImageView
         android:id="@+id/AppLogo"
-        android:layout_width="135dp"
-        android:layout_height="78dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         app:srcCompat="@drawable/logo_app"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="392dp"

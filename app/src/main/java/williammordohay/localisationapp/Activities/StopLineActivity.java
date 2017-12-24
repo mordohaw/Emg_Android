@@ -1,6 +1,7 @@
 package williammordohay.localisationapp.Activities;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -40,6 +41,11 @@ public class StopLineActivity extends CommunicationActivity {
         vueListe = (ListView) findViewById(R.id.lineListView);
         populateStopList(vueListe);
 
+    }
+
+    public void quitActivity(View v)
+    {
+        StopLineActivity.this.finish();
     }
 
     public void populateSpinner(){

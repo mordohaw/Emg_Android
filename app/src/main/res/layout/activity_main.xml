@@ -7,44 +7,41 @@
     android:background="@drawable/style_background"
     tools:context="williammordohay.localisationapp.Activities.MainActivity">
 
-    <Button
-        android:id="@+id/tram_stop_btn"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center"
-        android:background="@drawable/green_button2"
-        android:text="Arrets Tram"
-        android:onClick="gotoStopActivity"
-        android:layout_marginTop="101dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/imageView" />
-    <EditText
-        android:id="@+id/myPositionText"
-        android:layout_width="wrap_content"
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="position"
-        android:layout_below="@+id/tram_stop_btn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp" />
-    <Button
-        android:id="@+id/position_btn"
-        android:onClick=""
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:text="getPosition"
-        android:background="@drawable/green_button2"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="201dp"
-        android:layout_below="@+id/myPositionText"
-        android:layout_alignStart="@+id/tram_stop_btn"
-        android:layout_marginTop="14dp" />
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/tram_stop_btn"
+            android:layout_width="@dimen/button_size_width"
+            android:layout_height="@dimen/button_size_height"
+            android:background="@drawable/green_button2"
+            android:layout_gravity="center_horizontal"
+            android:onClick="gotoStopActivity"
+            android:text="Arrets Tram"
+            android:layout_marginTop="60dp"/>
+
+        <Button
+            android:id="@+id/position_btn"
+            android:layout_width="@dimen/button_size_width"
+            android:layout_height="@dimen/button_size_height"
+            android:text="getPosition"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/green_button2"
+            android:layout_marginTop="60dp"
+            />
+
+
+    </LinearLayout>
 
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/logo_size_width"
+        android:layout_height="@dimen/logo_size_height"
         app:srcCompat="@drawable/logo_app"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

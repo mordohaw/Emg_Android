@@ -22,11 +22,8 @@
         <activity
             android:name=".Activities.MainActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -43,8 +40,16 @@
         <activity
             android:name=".Activities.StopListActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activities.StopMenuActivity" />
-        <activity android:name=".Activities.StopLineActivity"></activity>
+        <activity android:name=".Activities.StopMenuActivity" android:screenOrientation="portrait" />
+        <activity android:name=".Activities.StopLineActivity" android:screenOrientation="portrait" />
+        <activity android:name=".Activities.LaunchActivity" android:screenOrientation="portrait" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

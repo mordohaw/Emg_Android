@@ -16,6 +16,7 @@ public class StopMenuActivity extends CommunicationActivity {
     private String[] myLines;
     private Button lineButton;
 
+    //https://maps.googleapis.com/maps/api/geocode/json?address=5%20Rue%20de%20New-York,%20Grenoble&key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,11 @@ public class StopMenuActivity extends CommunicationActivity {
 
         toto=inputData;*/
 
+    }
+
+    public void quitActivity(View v)
+    {
+        StopMenuActivity.this.finish();
     }
 
     public void goToLineActivity(View v){

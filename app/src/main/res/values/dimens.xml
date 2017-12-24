@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_size_width">150dp</dimen>
+    <dimen name="button_size_height">70dp</dimen>
+    <dimen name="logo_size_width">150dp</dimen>
+    <dimen name="logo_size_height">150dp</dimen>
+</resources>
