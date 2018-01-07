@@ -30,9 +30,16 @@ public class UrlConstructor {
     }
 
     public static String getGoogleMapPos(){
-        return(" https://maps.googleapis.com/maps/api/geocode/json?address=5%20Rue%20de%20New-York,%20Grenoble&key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks");
+        return("https://maps.googleapis.com/maps/api/geocode/json?address=5%20Rue%20de%20New-York,%20Grenoble&key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks");
 
     }
+
+    public static String getGeoCoordonates(String numRue,String nomRue){
+        return("https://maps.googleapis.com/maps/api/geocode/json?address="+numRue+","+"+rue+de+"+"nomRue+"+"Grenoble&key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks");
+
+    }
+
+    //https://maps.googleapis.com/maps/api/geocode/json?address=5,+rue+de+New-York,+Grenoble&key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks
 
 
 }
