@@ -49,9 +49,6 @@ public class StopLineActivity extends CommunicationActivity {
     }
 
     public void populateSpinner(){
-
-
-
         //populate the spinner
         ArrayAdapter<String> lineNumberAdapter = new ArrayAdapter<>(this, R.layout.element_spinner, myLines);
         lineSpinner.setAdapter(lineNumberAdapter);

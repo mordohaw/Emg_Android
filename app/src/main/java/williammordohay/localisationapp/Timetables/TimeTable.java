@@ -5,4 +5,6 @@ package williammordohay.localisationapp.Timetables;
  */
 
 public class TimeTable {
+    private PatternObject pattern;
+    private TimeObject[] times;
 }

@@ -21,6 +21,7 @@ import williammordohay.localisationapp.Stops.Stop;
 import williammordohay.localisationapp.R;
 import williammordohay.localisationapp.ApiConnection.UrlConstructor;
 import williammordohay.localisationapp.Stops.StopAdapter;
+import williammordohay.localisationapp.Timetables.TimeTable;
 
 public class StopListActivity extends CommunicationActivity {
 
@@ -86,6 +87,7 @@ public class StopListActivity extends CommunicationActivity {
                 //StopAdapter.StopView myItem = (StopAdapter.StopView) parent.getItemAtPosition(position).getClass();
                 Stop selectedStop = getStops().get(position);
                 view.setBackgroundColor(0000);
+
 
                 goToStopActivity(selectedStop);
 
