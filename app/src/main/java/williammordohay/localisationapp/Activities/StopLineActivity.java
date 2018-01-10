@@ -24,7 +24,6 @@ public class StopLineActivity extends CommunicationActivity {
     private ListView vueListe;
     private LineAdapter myLinesAdapter;
     private List<Line> lineList = new ArrayList<>();
-    private Gson gson;
     private String lineUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

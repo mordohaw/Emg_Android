@@ -31,7 +31,7 @@ public class MainActivity extends CommunicationActivity {
         setContentView(R.layout.activity_main);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        buttonStop = ((Button)findViewById(R.id.tram_stop_btn));
+        buttonStop = ((Button)findViewById(R.id.auto_btn));
         effetAuClic(buttonStop);
         //getPosition();
 
@@ -51,15 +51,6 @@ public class MainActivity extends CommunicationActivity {
         startActivity(communicationIntent);
     }
 
-    public void passPosition(Intent communication)
-    {
-        getPosition();
-        Bundle paquetSortant = new Bundle();
-
-        paquetSortant.putString("myLatitude", String.valueOf(latitudeGPS));
-        paquetSortant.putString("myLongitude", String.valueOf(longitudeGPS));
-        communication.putExtras(paquetSortant);
-    }
 
 
 

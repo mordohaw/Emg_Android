@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/greenThemeColor">
 
     <TextView
         android:id="@+id/name_value"
@@ -9,7 +10,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="GRENOBLE Cité Jean Macé / MEYLAN Maupertuis"
-        android:textSize="18dp" />
+        android:textSize="25dp" />
     />
     <LinearLayout
         android:orientation="horizontal"
@@ -22,13 +23,16 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:text="Mode :"
+            android:textSize="20dp"
             />
 
         <TextView
             android:id="@+id/mode_value"
+            android:gravity="center"
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:text="BUS"
+            android:textSize="22dp"
             />
 
 
@@ -37,6 +41,7 @@
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:text="Type :"
+            android:textSize="20dp"
             />
 
 
@@ -46,6 +51,7 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="CHRONO"
+            android:textSize="18dp"
             />
     </LinearLayout>
 

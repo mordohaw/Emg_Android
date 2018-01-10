@@ -26,14 +26,15 @@
         android:onClick="goToLineActivity"
         android:background="@drawable/green_button2"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/button2" />
+        android:layout_alignStart="@+id/timeButton" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/timeButton"
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:background="@drawable/green_button2"
-        android:text="Stop Info"
+        android:text="Time Info"
+        android:onClick="goToTimeActivity"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/imageView" />
 

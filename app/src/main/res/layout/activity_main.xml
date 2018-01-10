@@ -14,20 +14,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <Button
-            android:id="@+id/tram_stop_btn"
+            android:id="@+id/auto_btn"
             android:layout_width="@dimen/button_size_width"
             android:layout_height="@dimen/button_size_height"
             android:background="@drawable/green_button2"
             android:layout_gravity="center_horizontal"
             android:onClick="gotoStopActivity"
-            android:text="Arrets Tram"
+            android:text="Automatic Mode"
             android:layout_marginTop="60dp"/>
 
         <Button
-            android:id="@+id/position_btn"
+            android:id="@+id/manual_btn"
             android:layout_width="@dimen/button_size_width"
             android:layout_height="@dimen/button_size_height"
-            android:text="getPosition"
+            android:text="Manual Mode"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/green_button2"
             android:layout_marginTop="60dp"
