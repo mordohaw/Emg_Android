@@ -29,7 +29,6 @@ public class MainActivity extends CommunicationActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         buttonStop = ((Button)findViewById(R.id.auto_btn));
         effetAuClic(buttonStop);

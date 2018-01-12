@@ -1,6 +1,7 @@
 package williammordohay.localisationapp.Activities;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -25,6 +26,8 @@ public class StopLineActivity extends CommunicationActivity {
     private LineAdapter myLinesAdapter;
     private List<Line> lineList = new ArrayList<>();
     private String lineUrl;
+    private static final int refreshTime=5;
+    private SwipeRefreshLayout refreshView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,10 @@ public class StopLineActivity extends CommunicationActivity {
         populateSpinner();
 
         vueListe = (ListView) findViewById(R.id.lineListView);
-        populateStopList(vueListe);
+        populateLineList(vueListe);
+
+        refreshView = (SwipeRefreshLayout)findViewById(R.id.refreshLineList);
+        refreshList();
 
     }
 
@@ -56,7 +62,7 @@ public class StopLineActivity extends CommunicationActivity {
 
     }
 
-    public void populateStopList(ListView myListView) {
+    public void populateLineList(ListView myListView) {
         //populate the StopListView
         lineList = getLines();
         myLinesAdapter = new LineAdapter(this, lineList);
@@ -70,5 +76,58 @@ public class StopLineActivity extends CommunicationActivity {
         inputData = recupereDonnees(lineUrl);
 
         return (gson.fromJson(inputData, new TypeToken<List<Line>>(){}.getType()));
+    }
+
+    private void refreshList()
+    {
+
+
+        //rafraichirListe long-time task in background thread
+        new Thread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                while(!isDestroyed())
+                {
+                    try
+                    {
+
+                        //dummy delay for "tpsRafraichissement" second
+                        Thread.sleep(refreshTime*1000);
+
+                        //update ui on UI thread
+                        runOnUiThread(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+
+                                //set the rafraichirListe
+                                vueListe.invalidateViews();
+                                refreshView.setRefreshing(true);
+                                //set the action on up dating
+
+                                populateLineList(vueListe);
+
+
+                                //Update the list
+                                vueListe.invalidateViews();
+                                refreshView.setRefreshing(false);
+                            }
+                        });
+                    } catch (InterruptedException e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                }
+
+
+
+            }
+        }).start();
+
+
     }
 }

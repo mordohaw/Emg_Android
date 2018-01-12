@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25dp"
-        android:text="Informations sur les lignes"
+        android:text="@string/line_activity_title"
         android:textStyle="bold"
         android:layout_below="@+id/previousButton"
         android:layout_centerHorizontal="true" />
@@ -61,6 +61,14 @@
         android:layout_centerHorizontal="true" />
 
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLineList"
+        android:layout_centerHorizontal="true"
+        android:layout_height="match_parent"
+        android:layout_width="300dp"
+        android:layout_above="@id/AppLogo"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/spinnerLayout">
 
         <ListView
             android:layout_width="300dp"
@@ -71,6 +79,9 @@
             android:layout_below="@id/spinnerLayout"
             android:id="@+id/lineListView"
             />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
 
 
 </RelativeLayout>

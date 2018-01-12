@@ -54,8 +54,15 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         viewHolder.destinationName.setText(currentTimeTable.getPattern().getShortDesc());
 
         String hoursString="";
+        int currentHour;
+        int currentMin;
         for(int i=0;i<currentTimeTable.getTimes().length;i++){
-            hoursString += currentTimeTable.getTimes()[i].getRealtimeDeparture();
+            currentHour = currentTimeTable.getTimes()[i].getRealtimeDeparture()/3600;
+            currentMin = (currentTimeTable.getTimes()[i].getRealtimeDeparture()%3600)/60;
+            if(i>0){
+                hoursString += "  " + currentHour + " H " + currentMin;
+            }
+
 
         }
 
