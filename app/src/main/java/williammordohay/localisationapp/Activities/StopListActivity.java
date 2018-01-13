@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -66,15 +67,25 @@ public class StopListActivity extends CommunicationActivity {
 
         //On récupère la valeur
         //Bundle extras = getIntent().getExtras();
-        updatePosition();
+        try{
+            updatePosition();
+        }catch(Exception e){
+            Toast.makeText(this, R.string.position_unavailable, Toast.LENGTH_SHORT).show();
+        }
+
 
         vueListe = (ListView) findViewById(R.id.stopListView);
         gson = new Gson();
 
-        populateStopList(vueListe);
+        try{
+            populateStopList(vueListe);
 
-        refreshView = (SwipeRefreshLayout)findViewById(R.id.refreshList);
-        refreshList();
+            refreshView = (SwipeRefreshLayout)findViewById(R.id.refreshList);
+            refreshList();
+
+        }catch (Exception e){
+            Toast.makeText(this, R.string.web_unavailable, Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -87,7 +98,12 @@ public class StopListActivity extends CommunicationActivity {
 
     public void populateStopList(ListView myListView){
         //populate the StopListView
-        stopList = getStops();
+        try{
+            stopList = getStops();
+        }catch(Exception e){
+
+        }
+
         myStopAdapter = new StopAdapter(this,stopList);
 
         myListView.setAdapter(myStopAdapter);
@@ -137,6 +153,7 @@ public class StopListActivity extends CommunicationActivity {
     public List<Stop> getStops(){
         // "5.7180759" -- "45.1927837--500"     positionLong   positionLat
         stopUrl = UrlConstructor.getStopUrl("5.7180759","45.1927837",distanceSpinner.getSelectedItem().toString());
+        
         inputData = recupereDonnees(stopUrl);
 
         return (gson.fromJson(inputData, new TypeToken<List<Stop>>(){}.getType()));

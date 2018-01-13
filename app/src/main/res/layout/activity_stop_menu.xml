@@ -19,8 +19,9 @@
 
     <Button
         android:id="@+id/lineButton"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_width="@dimen/button_size_width"
+        android:layout_height="@dimen/button_size_height"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="94dp"
         android:text="Line info"
         android:onClick="goToLineActivity"
@@ -30,8 +31,9 @@
 
     <Button
         android:id="@+id/timeButton"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_width="@dimen/button_size_width"
+        android:layout_height="@dimen/button_size_height"
+        android:layout_gravity="center_horizontal"
         android:background="@drawable/green_button2"
         android:text="Time Info"
         android:onClick="goToTimeActivity"

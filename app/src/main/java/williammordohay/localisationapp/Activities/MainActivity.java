@@ -21,7 +21,7 @@ public class MainActivity extends CommunicationActivity {
     //private static final int REQUEST_LOCATION=1;
     //LocationManager locationManager;
     EditText positionValue;
-    Button buttonStop;
+    Button buttonAuto,buttonManual;
 
     private Intent communicationIntent;
 
@@ -30,8 +30,11 @@ public class MainActivity extends CommunicationActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buttonStop = ((Button)findViewById(R.id.auto_btn));
-        effetAuClic(buttonStop);
+        buttonAuto = ((Button)findViewById(R.id.auto_btn));
+        buttonManual = ((Button)findViewById(R.id.manual_btn));
+
+        effetAuClic(buttonAuto);
+        effetAuClic(buttonManual);
         //getPosition();
 
     }
@@ -40,6 +43,14 @@ public class MainActivity extends CommunicationActivity {
 
 
 
+    public void gotoGeolocActivity(View v)
+    {
+        communicationIntent = new Intent(MainActivity.this, GeolocActivity.class);
+        // 04/12 passPosition(communicationIntent);
+        //effetAuClic(v);
+
+        startActivity(communicationIntent);
+    }
 
     public void gotoStopActivity(View v)
     {
