@@ -2,7 +2,6 @@ package williammordohay.localisationapp.Activities;
 
 
 import android.graphics.PorterDuff;
-import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -33,10 +32,10 @@ public abstract class CommunicationActivity extends AppCompatActivity{
     {
         //réception de données provenants du service Web
         String donneesEntrantes="";
+        AsyncTask monAsyncTask;
         try
         {
-
-            AsyncTask monAsyncTask = new WebServiceGetter().execute(urlRequete);
+            monAsyncTask = new WebServiceGetter().execute(urlRequete);
             donneesEntrantes = (String) monAsyncTask.get();
             monAsyncTask.cancel(true);
         }

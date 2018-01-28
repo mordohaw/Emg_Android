@@ -23,7 +23,7 @@ public class MainActivity extends CommunicationActivity {
     EditText positionValue;
     Button buttonAuto,buttonManual;
 
-    private Intent communicationIntent;
+    private Intent autoIntent,communicationIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,14 @@ public class MainActivity extends CommunicationActivity {
 
 
 
+    public void passIsAutomatic(Intent communication)
+    {
+        Bundle paquetSortant = new Bundle();
+        Boolean isAutomatic = true;
+
+        paquetSortant.putBoolean("isAutomatic", isAutomatic);
+        communication.putExtras(paquetSortant);
+    }
 
 
     public void gotoGeolocActivity(View v)
@@ -54,11 +62,12 @@ public class MainActivity extends CommunicationActivity {
 
     public void gotoStopActivity(View v)
     {
-        communicationIntent = new Intent(MainActivity.this, StopListActivity.class);
+        autoIntent = new Intent(MainActivity.this, StopListActivity.class);
         // 04/12 passPosition(communicationIntent);
         //effetAuClic(v);
+        passIsAutomatic(autoIntent);
 
-        startActivity(communicationIntent);
+        startActivity(autoIntent);
     }
 
 

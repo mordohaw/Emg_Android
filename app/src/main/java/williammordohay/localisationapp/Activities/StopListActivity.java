@@ -47,6 +47,7 @@ public class StopListActivity extends CommunicationActivity {
     //private static final int REQUEST_LOCATION=1;
     protected LocationManager locationManager;
 
+    private boolean isAutomatic=false;
     private String stopUrl="";
     private ListView vueListe;
     private StopAdapter myStopAdapter;
@@ -55,6 +56,7 @@ public class StopListActivity extends CommunicationActivity {
     private SwipeRefreshLayout refreshView;
     private static int refreshTime = 5;
     private Spinner distanceSpinner;
+    private Bundle paquetEntrant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,27 +67,44 @@ public class StopListActivity extends CommunicationActivity {
         distanceSpinner = (Spinner) findViewById(R.id.distanceSpinner);
         populateSpinner();
 
-        //On récupère la valeur
-        //Bundle extras = getIntent().getExtras();
-        try{
-            updatePosition();
-        }catch(Exception e){
-            Toast.makeText(this, R.string.position_unavailable, Toast.LENGTH_SHORT).show();
-        }
+        //On récupère la valeur du booléen
+        paquetEntrant = getIntent().getExtras();
+        isAutomatic = paquetEntrant.getBoolean("isAutomatic");
 
-
+        //init
         vueListe = (ListView) findViewById(R.id.stopListView);
         gson = new Gson();
+        refreshView = (SwipeRefreshLayout)findViewById(R.id.refreshList);
 
-        try{
+        if(isAutomatic){
+            //AUTO MODE
+            try{
+                updatePosition();
+            }catch(Exception e){
+                Toast.makeText(this, R.string.position_unavailable, Toast.LENGTH_SHORT).show();
+            }
+
+
+
+
+            try{
+                populateStopList(vueListe);
+
+                refreshList();
+
+            }catch (Exception e){
+                Toast.makeText(this, R.string.web_unavailable, Toast.LENGTH_SHORT).show();
+            }
+
+
+        }else{
+            //MANUAL MODE On récupère la valeur des coordonnées manuelles
+            positionLat = paquetEntrant.getString("manualLat");
+            positionLong = paquetEntrant.getString("manualLong");
             populateStopList(vueListe);
-
-            refreshView = (SwipeRefreshLayout)findViewById(R.id.refreshList);
             refreshList();
-
-        }catch (Exception e){
-            Toast.makeText(this, R.string.web_unavailable, Toast.LENGTH_SHORT).show();
         }
+
 
     }
 
@@ -152,8 +171,8 @@ public class StopListActivity extends CommunicationActivity {
 
     public List<Stop> getStops(){
         // "5.7180759" -- "45.1927837--500"     positionLong   positionLat
-        stopUrl = UrlConstructor.getStopUrl("5.7180759","45.1927837",distanceSpinner.getSelectedItem().toString());
-        
+        stopUrl = UrlConstructor.getStopUrl(positionLong,positionLat,distanceSpinner.getSelectedItem().toString());
+
         inputData = recupereDonnees(stopUrl);
 
         return (gson.fromJson(inputData, new TypeToken<List<Stop>>(){}.getType()));
@@ -193,7 +212,9 @@ public class StopListActivity extends CommunicationActivity {
                                 refreshView.setRefreshing(true);
                                 //set the action on up dating
 
-                                updatePosition();
+                                if(isAutomatic){
+                                    updatePosition();
+                                }
                                 populateStopList(vueListe);
 
 

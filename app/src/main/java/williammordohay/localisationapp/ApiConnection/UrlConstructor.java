@@ -34,12 +34,14 @@ public class UrlConstructor {
 
     }
 
-    public static String getGeoCoordonates(String numRue,String nomRue){
-        return("https://maps.googleapis.com/maps/api/geocode/json?address="+numRue+","+"+rue+de+"+"nomRue+"+"Grenoble&key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks");
+    public static String getGeoCoordonates(String placeType,String placeName){
+        return("https://maps.googleapis.com/maps/api/geocode/json?address="+placeType+"+"+placeName+"+"+"Grenoble&key="+myGoogleApiKey);
 
     }
 
     //https://maps.googleapis.com/maps/api/geocode/json?address=5,+rue+de+New-York,+Grenoble&key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks
+
+    //https://maps.googleapis.com/maps/api/geocode/json?address=rue+NewYork+Grenoble&key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks
 
 
 }

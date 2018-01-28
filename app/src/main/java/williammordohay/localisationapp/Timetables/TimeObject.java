@@ -9,7 +9,7 @@ public class TimeObject {
     private int scheduledArrival,scheduledDeparture,realtimeArrival,realtimeDeparture,arrivalDelay,departureDelay,serviceDay,tripId;
     private boolean timepoint, realtime;
 
-    public TimeObject(String stopId, String stopName, int scheduledArrival, int scheduledDeparture, int realtimeArrival, int realtimeDeparture, int arrivalDelay, int departureDelay, int serviceDay, int tripId, boolean timepoint, boolean realtime) {
+    /*public TimeObject(String stopId, String stopName, int scheduledArrival, int scheduledDeparture, int realtimeArrival, int realtimeDeparture, int arrivalDelay, int departureDelay, int serviceDay, int tripId, boolean timepoint, boolean realtime) {
         this.stopId = stopId;
         this.stopName = stopName;
         this.scheduledArrival = scheduledArrival;
@@ -22,7 +22,7 @@ public class TimeObject {
         this.tripId = tripId;
         this.timepoint = timepoint;
         this.realtime = realtime;
-    }
+    }*/
 
     public String getStopId() {
         return stopId;
