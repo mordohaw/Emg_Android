@@ -115,5 +115,10 @@ public class GeolocActivity extends CommunicationActivity {
 
     }
 
+    public void quitActivity(View v)
+    {
+        GeolocActivity.this.finish();
+    }
+
 
 }
