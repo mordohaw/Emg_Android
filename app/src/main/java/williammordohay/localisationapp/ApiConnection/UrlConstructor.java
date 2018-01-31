@@ -39,6 +39,12 @@ public class UrlConstructor {
 
     }
 
+    public static String postPosition(){
+        return("https://www.googleapis.com/geolocation/v1/geolocate?key="+myGoogleApiKey);
+    }
+
+
+    // POST   https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks   
     //https://maps.googleapis.com/maps/api/geocode/json?address=5,+rue+de+New-York,+Grenoble&key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks
 
     //https://maps.googleapis.com/maps/api/geocode/json?address=rue+NewYork+Grenoble&key=AIzaSyDeDG09ZXIlnEfkHNkA1zHqHyCb2t7SZks

@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
+import williammordohay.localisationapp.GoogleMap.LocationPost;
 import williammordohay.localisationapp.Stops.Stop;
 import williammordohay.localisationapp.R;
 import williammordohay.localisationapp.ApiConnection.UrlConstructor;
@@ -47,8 +48,8 @@ public class StopListActivity extends CommunicationActivity {
     //private static final int REQUEST_LOCATION=1;
     protected LocationManager locationManager;
 
-    private boolean isAutomatic=false;
-    private String stopUrl="";
+    private boolean isAutomatic;
+    private String stopUrl="",mapUrl="";
     private ListView vueListe;
     private StopAdapter myStopAdapter;
     private List<Stop> stopList = new ArrayList<>();
@@ -111,8 +112,11 @@ public class StopListActivity extends CommunicationActivity {
     public void updatePosition(){
         //if (checkLocation())
         getPosition();
-        positionLat = String.valueOf(latitudeGPS);//extras.getString("myLatitude");
+        positionLat =  String.valueOf(latitudeGPS);//extras.getString("myLatitude");
         positionLong = String.valueOf(longitudeGPS); //extras.getString("myLongitude");
+        if(positionLat=="0.0" || positionLong =="0.0"){
+            Toast.makeText(this, "Please wait few second, the stops will be displayed. if not, go outside please. Thanks a lot", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void populateStopList(ListView myListView){
@@ -166,6 +170,7 @@ public class StopListActivity extends CommunicationActivity {
         paquetSortant.putStringArray("myLines", lines);
         communication.putExtras(paquetSortant);
     }
+
 
 
 
